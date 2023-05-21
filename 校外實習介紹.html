@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="menu.css">
+    <style>
+        a{
+            text-decoration:none;
+        }
+        .wrap-1{
+            width: 100%;
+        }
+        .title p{
+            font-size: 40px;
+            text-align:center;
+            font-weight: bolder;
+            margin: 50px 50px 0px 50px;
+        }
+        .title hr{
+            border: 5px solid #607D8B;
+            width: 300px;
+            margin: 0px auto 100px;
+            background-color: #607D8B;
+        }
+        .wrap-2{
+            background-color: #607D8B;
+        }
+        .wrap-2 img{
+            width: 100%;
+        }
+        .wrap-2 p{
+            text-align: center;
+            font-size: 30px;
+            margin: 10px 0px 10px 0px;
+            color:azure ;
+        }
+        .wrap-2 ul{
+            margin: 10px 20px 20px 20px;
+            padding: 0px 20px 20px 20px;
+            color:azure ;
+        }
+        .wrap-2 li{
+            text-align: left;
+        }
+
+        .wrap-3 p{
+            text-align: center;
+            font-size: 30px;
+            margin: 10px 0px 10px 0px;
+        }
+        .wrap-3 ol{
+            margin: 10px auto 20px;
+        }
+        .wrap-3 li{
+            text-align: left;
+            margin: 10px 20px 10px 20px;
+            font-size: 20px;
+        }
+        .wrap-3 img{
+            width: 100%;
+            margin: 20px auto;
+        }
+        .img{
+            width: 100%;
+        }
+        .img-1{
+            /*border: 2px solid#000; 輔助線*/
+        }
+        .img img{
+            width: 100%;
+            margin: 25px auto;
+        }
+        .img p{
+            margin: 10px auto 20px;
+            font-size: 25px;
+            color: #607D8B;
+            text-align: center;
+            font-weight: bolder;
+        }
+        .wrap-4{
+            background-color:#F4F4F4 ; 
+        }
+        .wrap-4 img{
+            width: 100%;
+        }
+        .wrap-4 p{
+            font-size: 40px;
+            text-align: left;
+            margin: 20px auto auto 30px;
+        }
+        .wrap-4 li{
+            margin: 10px 10px 10px 10px;
+            text-align: left;
+        }
+
+        p#in{
+            font-size: 20px;
+            text-align: center;
+            border: 5px;
+            border-radius: 3px;
+            justify-content: center;
+            color:azure ;
+            margin: 50px 30px 20px; 
+            background-color: #607D8B;
+        }
+        @media screen and (min-width: 768px){
+        .wrap-1{
+            width: 600px;
+            margin: auto auto 50px;
+        }
+        .title p{
+            font-size: 50px;
+            margin: 20px;
+            text-align: center;
+        }
+        .title hr{
+            border: 5px solid #607D8B;
+            width:600px;
+            margin: auto;
+        }
+        .wrap-2{
+            display: flex;
+            margin: auto;
+        }
+        .wrap-2 img{
+            width: 45vw;
+            height: 30vw;
+            margin: 30px 20px;
+        }
+        .wrap-2-word{
+            margin: 50px auto;
+        }
+        .wrap-2 p{
+            text-align: center;
+            font-size: 50px;
+            margin: 10px 0px 10px 0px;
+        }
+        .wrap-2 li{
+            text-align: left;
+            margin: 10px;
+            font-size: 20px;
+        }
+        
+        .wrap-3{
+            display: flex;
+            margin: 20px auto;
+        }
+        .wrap-3 p{
+            text-align: center;
+            font-size: 50px;
+            margin: 10px 0px 10px 0px;
+        }
+        .wrap-3 img{
+            width: 55vw;
+            height: 40vw;
+            margin: 20px auto 20px;
+        }
+        
+        .img{
+            display: flex;
+        }
+        .img-1{
+            width: 100%;
+            margin: 20px 20px;
+        }
+        .img img{
+            width: 100%;
+            margin: 25px  0px;
+        }
+        .img p{
+            margin: 10px auto 20px;
+            font-size: 25px;
+            color: #607D8B;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+
+        .wrap-4{
+            display: flex;
+            margin: auto;
+        }
+        .wrap-4 img{
+            width: 45vw;
+            height: 30vw;
+            margin: 30px 20px;
+        }
+        .wrap-4-word{
+            margin: 50px auto;
+        }
+        .wrap-4 p{
+            text-align: center;
+            font-size: 50px;
+            margin: 10px 0px 10px 0px;
+        }
+        .wrap-4 ul{
+            margin: 10px 10px 0px 10px;
+        }
+        
+        }
+
+        @media screen and (min-width: 1280px){
+        .wrap-2{
+            display: flex;
+            margin: auto;
+        }
+        .wrap-2 img{
+            width: 80vh;
+            height: 40vh;
+            margin: 30px 20px 30px 180px;
+        }
+        .wrap-2-word{
+            margin: 50px 0px;
+        }
+        .wrap-2 p{
+            text-align: left;
+            font-size: 50px;
+            margin: 20px auto;
+        }
+        .wrap-2 ul{
+            margin: 10px 10px 0px 10px;
+        }
+        .wrap-2 li{
+            text-align: left;
+            margin: 10px;
+            font-size: 20px;
+        }
+
+        .wrap-3{
+            display: flex;
+            margin: 30px auto;
+        }
+        .wrap-3 p{
+            text-align: center;
+            font-size: 50px;
+            margin: 10px 0px 10px 0px;
+        }
+        .wrap-3 img{
+            width: 100vh;
+            height: 70vh;
+            margin: auto 200px auto 50px;
+
+        }
+        .wrap-3 ol{
+            text-align: right;
+        }
+        .wrap-3 li{
+            font-size: 25px;
+            
+        }
+        .wrap-3-word{
+            margin: 0px auto 0px ;
+        }
+        .img{
+            display: flex;
+            width: 1500px;
+            margin: auto;
+        }
+        .img-1{
+            width:  300px;
+            height: 40vh;
+            margin: 20px auto;
+        }
+        .img-1 img{
+            margin: 0px;
+            height: 30vh;
+            margin: auto;
+        }
+        .wrap-4{
+            display: flex;
+            margin: auto;
+        }
+        .wrap-4 img{
+            width: 60vh;
+            height: 40vh;
+            margin: 30px 20px 30px 300px;
+        }
+        .wrap-4-word{
+            margin: 50px;
+        }
+        .wrap-4 p{
+            text-align: center;
+            font-size: 50px;
+            margin: 10px 0px 10px 0px;
+        }
+        .wrap-4 ul{
+            margin: 10px 10px 0px 10px;
+        }
+        
+        }
+        
+    </style>
+</head>
+<body>
+    <input type="checkbox" name="" id="menu_control">
+    <div class="header">
+        <a href="#" class="logo">
+            <img src="img/newmust.JPG">
+        </a>
+        <a>
+        <span style="font-family: serif;">明新科大資訊管理系實習網站</span> 
+        <td valign="bottom">
+        </a>
+        <label for="menu_control" class="menu_btn">
+            <span>選單</span>
+        </label>
+        <nav class="navbar">
+            <ul class="drop-down-menu" style="list-style: none;">
+                <li><a href="index.html" class="item" id="AAA">首頁</a></li>
+                <li><a href="最新消息.html" class="item">最新消息</a></li>
+                <li><a href="實習資訊.html" class="item">實習資訊</a>
+                    <ul class="drop-down-menu3" style="list-style: none;">
+                        <li><a href="校外實習介紹.html" class="item">校外實習介紹</a></li>
+                        <li><a href="最新職缺.html" class="item">最新實習介紹</a></li>
+                        <li><a href="實習注意事項.html" class="item">實習注意事項</a></li>
+                        <li><a href="實習寶典.html" class="item">實習寶典</a></li>
+                        <li><a href="法規與表單.html" class="item">法規與表單</a></li>
+                    </ul>
+                </li>
+                <li><a href="Ltd.html" class="item">合作廠商</a></li>
+                <li><a href="實習成就.html" class="item">實習成就</a>
+                    <ul class="drop-down-menu5" style="list-style: none;">
+                        <li><a href="實習心得分享.html" class="item">實習心得分享</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="上傳資料.html" class="item">上傳資料</a>
+                    <ul class="drop-down-menu6" style="list-style: none;">
+                        <li><a href="實習週記.html" class="item">實習週記</a>
+                        </li>
+                        <li><a href="期中報告.html" class="item">期中報告</a>
+                        </li>
+                        <li><a href="期末報告.html" class="item">期末報告</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="FQA.html" class="item">常見問題</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="about">
+        <div class="wrap-1">
+                <div class="title">
+                    <p>校外實習介紹</P>
+                    <hr>
+                </div> 
+        </div>
+    </div>
+
+    <div class="wrap-2">
+        <img src="校外實習介紹img/校外實習介紹.jpg" alt="">
+        <div class="wrap-2-word">
+            <p>實習資格</p>
+            <ul>
+                <li>全員學生於大四第一學期參與實習一學期至兩學期(特定狀況除外)</li>
+                <li>本系校外實習課程開設四年級第一學期與第二學期</li>
+                <li>實習期間分為半年與一年，以同一實習機構為原則</li>
+                <li>每學期實習課程均為 3 門課，每門課各 3 學分。</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="wrap-3">
+        <div class="wrap-3-word">
+            <p>實習流程</p>
+            <ol>
+                <li>實習宣傳</li>
+                <li>實習意願調查</li>
+                <li>實習安排與模擬面試</li>
+                <li>公司面試與結果公告</li>
+                <li>實習行前宣導</li>
+                <li>期初實習週記</li>
+                <li>實習委員實地訪視 (2~3次)</li>
+                <li>期中返校座談(心得分享)</li>
+                <li>期末返校座談(心得分享)</li>
+                <li>期末海報</li>
+                <li>實習廠商與學生之意見回饋</li>
+            </ol>
+        </div>
+        <img src="校外實習介紹img/校外實習介紹.jpg" alt="">
+    </div>
+
+    <div class="img">
+        <div class="img-1">
+            <img src="校外實習介紹img/實習職缺宣導.jpg" alt="">
+            <p>實習宣傳</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/模擬面試.jpg" alt="">
+            <p>實習安排與模擬面試</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/模擬面試.jpg" alt="">
+            <p>公司面試</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/模擬面試.jpg" alt="">
+            <p>行前宣導</p>
+        </div>
+    </div>
+    
+    <div class="img">
+        <div class="img-1">
+            <img src="校外實習介紹img/實習職缺宣導.jpg" alt="">
+            <p>實習委員實地訪視</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/模擬面試.jpg" alt="">
+            <p>期中返校座談</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/實習期末返校.jpg" alt="">
+            <p>期末返校座談</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/模擬面試.jpg" alt="">
+            <p>期末海報</p>
+        </div>
+    </div>
+
+    <div class="img">
+        <div class="img-1">
+            <img src="校外實習介紹img/欣興電子入班宣導.jpg" alt="">
+            <p>實習廠商入班宣導</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/模擬面試.jpg" alt="">
+            <p>學長姐實習經驗分享</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/廠商意見反映.jpg" alt="">
+            <p>廠商與家長意見反饋</p>
+        </div>
+        <div class="img-1">
+            <img src="校外實習介紹img/模擬面試.jpg" alt="">
+            <p>實習職前訓練</p>
+        </div>
+    </div>
+    
+
+    <div class="wrap-4">
+        <img src="校外實習介紹img/校外實習介紹.jpg" alt="">
+        <div class="wrap-4-word">
+            <p>實習注意事項</p>
+            <ul>
+                <li>須注意修習課程、學分、專業證照門檻是否足夠</li>
+                <li>返校修課須獲得單位主管同意</li>
+                <li>實習期間注意自身行為，言行皆代表學校</li>
+            </ul>
+            <a href="實習注意事項.html"><p id="in">實習注意事項</p></a>
+        </div>
+    </div>
+
+
+</body>
+</html>

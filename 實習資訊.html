@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="title.css">
+    <style>
+        .IC{
+            width: 100%;
+        }
+        .IC img{
+            width: 100%;
+        }
+        .IC P{
+            text-align: center;
+            font-size: 35px;
+        }
+        .IC li{
+            font-size: 23px;
+            margin: 10px 5px;
+        }
+        .wrap-2{
+            background-color: #607D8B;
+            width: 100%;
+        }
+        .wrap-2 img{
+            width: 100%;
+        }
+        p#must {
+            font-size: 25px;
+            justify-content: center;
+            text-align: center;
+            color: azure;
+            margin: 20px auto;
+        }
+        .wrap-2 p{
+            font-size: 20px;
+            justify-content: center;
+            color: azure;
+            margin: 0px 30px;
+        }
+        p#in{
+            text-align: center;
+            border: 5px;
+            border-radius: 3px;
+            justify-content: center;
+            color: #607D8B;
+            margin: 20px 30px;
+            background-color: azure;;
+        }
+        .wrap-2 hr{
+            margin: 20px 0 0 0;
+        }
+
+        p#title{
+            margin: 10px 0;
+            text-align: center;
+            font-size: 30px;
+        }
+        .wrap-3{
+            background-color:#F4F4F4;
+        }
+        .wrap-3 p{
+            margin: 20px 30px;
+            font-size: 20px;
+            justify-content: center;
+        }
+        p#end{
+            border: 5px;
+            font-size: 20px;
+            text-align: center;
+            color: azure;
+            border-radius: 3px;
+            background-color: #607D8B;;
+        }
+        .wrap-3 img{
+            width: 100%;
+            margin: 20px auto 50px;
+        }
+        .wrap-4{
+            width: 100%;
+        }
+        .wrap-4 img{
+            width: 100%;
+            margin: 20px auto 20px;
+        }
+        .wrap-5{
+            width: 100%;
+        }
+        .wrap-5 p{
+            justify-content: center;
+            font-size: 30px;
+        }
+        .wrap-5 li{
+            font-size: 20px;
+        }
+
+        @media screen and (min-width: 768px){
+
+            .IC{
+                display: flex;
+            }
+            .IC img{
+                width: 50vw;
+                height: 30vh;
+                margin: 100px 20px;
+            }
+            .IC p{
+                margin: 100px 20px 0px;
+                font-size: 26px;
+                text-align: center;
+            }
+            .wrap-2{
+                display:flex;
+                margin: 20px 0;
+            }
+            .wrap-2 img{
+                width: 50vw;
+                height: 30vh;
+                margin: 30px 20px 10px;
+            }
+            p#must {
+            text-align: center;
+            margin: 20px 30px;
+            font-size: 26px;
+            color: azure;
+        }
+            .wrap-2 p{
+            font-size: 20px;
+            justify-content: center;
+            color: azure;
+            
+        }
+            p#in{
+            text-align: center;
+            border: 5px;
+            border-radius: 3px;
+            justify-content: center;
+            color: #607D8B;
+            margin: 20px 30px;
+            background-color: azure;;
+        }
+        .wrap-2 hr{
+            display: none;
+        }
+        .wrap-3{
+            display: flex;
+        }
+        .wrap-3 img{
+            width: 50vw;
+            height: 30vh;
+            margin: 20px  20px;
+        }
+        p#title{
+            margin: 100px auto  10px;
+            text-align: center;
+            font-size: 26px;
+
+        }
+        .wrap-3 p{
+            margin: 20px 30px;
+            font-size: 20px;
+            justify-content: center;
+        }
+        p#end{
+            border: 5px;
+            font-size: 20px;
+            text-align: center;
+            color: azure;
+            border-radius: 3px;
+            background-color: #607D8B;;
+        }
+        .wrap-4{
+            display: flex;
+        }
+        .wrap-4 img{
+            width: 40vw;
+            height: 20vh;
+            margin: 30px 10px 30px 40px;
+        }
+        }
+        .wrap-5 p{
+            text-align: center;
+            font-size: 30px;
+            margin: 10px 50px
+        }
+        .wrap-5 li{
+            font-size: 20px;
+            list-style: decimal;
+            text-align:left;
+            margin: 15px 0px;
+        }
+
+        @media screen and (min-width: 1024px){
+            .IC{
+                display: flex;
+            }
+            .IC img{
+                width: 50vw;
+                height: 30vw;
+                margin: 100px 50px;
+            }
+            .ic-must{
+                margin:auto;
+            }
+            .IC p{
+                margin: 50px 20px 0px;
+                font-size: 26px;
+                text-align: center;
+            }
+            .wrap-2{
+                display: flex;
+                margin: 20px 0;
+            }
+            .wrap-2 img{
+                width: 60vh;
+                height: 30vh;
+                margin: 80px 50px;
+            }
+            .must-in{
+                width: 50%;
+            }
+            p#must {
+            text-align: center;
+            margin: 50px 30px 20px;
+            font-size: 26px;
+            color: azure;
+        }
+            .must-in p{
+            font-size: 20px;
+            text-justify: all;
+            color: azure;
+            
+        }
+            p#in{
+            text-align: center;
+            border: 5px;
+            border-radius: 3px;
+            justify-content: center;
+            color: #607D8B;
+            margin: 20px auto;
+            width: 20%;
+            background-color: azure;;
+        }
+        .wrap-2 hr{
+            display: none;
+        }
+        .wrap-3{
+            display: flex;
+        }
+        .wrap-3 img{
+            width: 60vh;
+            height: 30vh;
+            margin: 20px  20px;
+        }
+        p#title{
+            margin: 50px auto  10px;
+            text-align: center;
+            font-size: 26px;
+
+        }
+        .wrap-3 p{
+            margin: 20px 30px;
+            font-size: 20px;
+            justify-content: center;
+        }
+        p#end{
+            width: 20%;
+            border: 5px;
+            font-size: 20px;
+            text-align: center;
+            margin: auto;
+            justify-content: center;
+            color: azure;
+            border-radius: 3px;
+            background-color: #607D8B;;
+            margin: 30px auto;
+        }
+        .wrap-4{
+            flex-wrap: nowrap;
+        }
+        .wrap-4 img{
+            width: 80vh;
+            height: 35vh;
+            margin: 30px 45px 30px 50px;
+            
+        }
+        .wrap-5{
+            justify-content: center;
+        }
+        .wrap-5 p{
+            text-align: center;
+            font-size: 30px;
+            margin: 10px auto;
+        }
+        .wrap-5 li{
+            font-size: 20px;
+            margin: 10px auto;
+            text-align:center;
+            list-style: decimal;
+        }
+        }
+
+        @media screen and (min-width: 1200px){
+            .IC{
+                display: flex;
+                margin: 20px;
+            }
+            .IC img{
+                width: 60vh;
+                height: 40vh;
+                margin:150px;
+            }
+            .ic-must{
+                margin: 50px 20px 0px 30px;
+            }
+            .IC br{
+                display: none;
+            }
+            .IC p{
+                margin: 100px 20px 0px;
+                font-size: 50px;
+                text-align: center;
+            }
+            .IC li{
+                margin: 20px 0px;
+                font-size: 30px;
+            }
+
+            .wrap-2{
+                display: flex;
+                margin: 20px 0;
+            }
+            .wrap-2 img{
+                width: 60vh;
+                height: 30vh;
+                margin: 80px 150px;
+            }
+            .must-in{
+                width: 50%;
+            }
+            p#must {
+            text-align: center;
+            margin: 50px 30px 20px;
+            font-size: 26px;
+            color: azure;
+        }
+            .must-in p{
+            font-size: 20px;
+            text-justify: all;
+            color: azure;
+            
+        }
+            p#in{
+            text-align: center;
+            border: 5px;
+            border-radius: 3px;
+            justify-content: center;
+            color: #607D8B;
+            margin: 20px auto;
+            width: 20%;
+            background-color: azure;;
+        }
+        .wrap-2 hr{
+            display: none;
+        }
+        .wrap-3{
+            display: flex;
+        }
+        .wrap-3 img{
+            width: 60vh;
+            height: 30vh;
+            margin: 20px  20px;
+        }
+        p#title{
+            margin: 50px auto  10px;
+            text-align: center;
+            font-size: 26px;
+
+        }
+        .wrap-3 p{
+            margin: 20px 30px;
+            font-size: 20px;
+            justify-content: center;
+        }
+        p#end{
+            width: 20%;
+            border: 5px;
+            font-size: 20px;
+            text-align: center;
+            margin: auto;
+            justify-content: center;
+            color: azure;
+            border-radius: 3px;
+            background-color: #607D8B;;
+            margin: 30px auto;
+        }
+        .wrap-4{
+            flex-wrap: nowrap;
+        }
+        .wrap-4 img{
+            width: 35%;
+            height: 35vh;
+            margin: 10px 100px 10px 100px;
+            
+        }
+        .wrap-5{
+            justify-content: center;
+        }
+        .wrap-5 p{
+            text-align: center;
+            font-size: 30px;
+            margin: 10px auto;
+        }
+        .wrap-5 li{
+            font-size: 20px;
+            margin: 10px auto;
+            text-align:center;
+            list-style: decimal;
+        }
+        }
+    </style>
+</head>
+<body>
+
+    <input type="checkbox" name="" id="menu_control">
+
+    <div class="header">
+        <a href="#" class="logo">
+            <img src="img/newmust.JPG">
+        </a>
+        <a>
+        <span style="font-family: serif;">明新科大資訊管理系實習網站</span> 
+        <td valign="bottom">
+        </a>
+        <label for="menu_control" class="menu_btn">
+            <span>選單</span>
+        </label>
+        <nav class="navbar">
+            <ul class="drop-down-menu" style="list-style: none;">
+                <li><a href="index.html" class="item" id="AAA">首頁</a></li>
+                <li><a href="最新消息.html" class="item">最新消息</a></li>
+                <li><a href="實習資訊.html" class="item">實習資訊</a>
+                    <ul class="drop-down-menu3" style="list-style: none;">
+                        <li><a href="校外實習介紹.html" class="item">校外實習介紹</a></li>
+                        <li><a href="最新職缺.html" class="item">最新實習介紹</a></li>
+                        <li><a href="實習注意事項.html" class="item">實習注意事項</a></li>
+                        <li><a href="實習寶典.html" class="item">實習寶典</a></li>
+                        <li><a href="法規與表單.html" class="item">法規與表單</a></li>
+                    </ul>
+                </li>
+                <li><a href="Ltd.html" class="item">合作廠商</a></li>
+                <li><a href="實習成就.html" class="item">實習成就</a>
+                    <ul class="drop-down-menu5" style="list-style: none;">
+                        <li><a href="實習心得分享.html" class="item">實習心得分享</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="上傳資料.html" class="item">上傳資料</a>
+                    <ul class="drop-down-menu6" style="list-style: none;">
+                        <li><a href="實習週記.html" class="item">實習週記</a>
+                        </li>
+                        <li><a href="期中報告.html" class="item">期中報告</a>
+                        </li>
+                        <li><a href="期末報告.html" class="item">期末報告</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="FQA.html" class="item">常見問題</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="about">
+        <div class="wrap-1">
+                <div class="title">
+                    <p>實習資訊</P>
+                    <hr>
+                </div> 
+        </div>
+    </div>
+
+    <div class="IC">
+        <img src="img/IC之音.jpg" alt="">
+        <div class="ic-must">
+            <p>實習輔導(IC之音採訪)</p>
+            <ul>
+                <li>資管和資工的差異<br>(4分鐘, 00:05:40~00:09:50) </li>
+                <li>明新資管_企業實習工作種類<br>(1分鐘, 00:17:17~00:18:27) </li>
+                <li>智邦科技實習工作內容<br>(1分鐘, 00:20:55~00:21:40) </li>
+                <li>明新資管_企業實習輔導<br>(7分鐘, 00:30:00~00:37:20)</li>
+            </ul>
+        </div>
+    </div>
+        
+        <div class="wrap-2">
+            <img src="img/實習資訊1.jpg" alt="">
+            <div class="must-in">
+                <p id="must">明新科大資管系校外介紹</p>
+            <p>為增進學生職場實務經驗，落實實務人才的養成教育
+                ，讓學校教學可與業界需求接軌，
+                使學生畢業後可立即為企業所用
+                。資管系學生(三下、四上或四下)
+                到公司全時實習一學期或一年
+                ，由廠商提供實習名額，
+                薪資每月由基本工資26,400元到40,000元
+                ，本系遴選符合業者需求的學生
+                至廠商處實地工作與學習。
+            </p>
+            <a href="校外實習介紹.html" style="text-decoration:none;"><p id="in">詳細資訊</p></a>
+            <hr>
+            </div>
+            
+        </div>
+    </div>
+        
+        <div class="wrap-3">
+            <div>
+            <p id="title">實習寶典</p>
+            <p>提供履歷準備、自傳撰寫技巧、
+                以及面試百寶箱等相關資訊，
+                給有意願參與實習同學參考。
+            </p>
+            <a href="實習寶典.html"><p id="end">詳細資訊</p></a>
+            </div>
+            
+            <img src="img/實習資訊1.jpg" alt="">
+        </div>
+        <div class="wrap-4">
+            <img src="img/實習資訊3.jpg" alt="">
+            <img src="img/實習資訊3.jpg" alt="">
+        </div>
+        <div class="wrap-5">
+                <p> 校外實習相關法規與表單</p>
+                    <li>
+                        提供明新科大資管系校外實習學生校外實習教學要點，以及成績考核相關法規。
+                    </li>
+                    <li>
+                        提供實習周記、期中心得報告、實習成果報告、實習成果海報範本表單下載
+                    </li>
+                <a href="法規與表單.html" ><p id="end">詳細資訊</p></a>
+            </div>  
+
+
+</body>
+</html>
