@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <style>
+
+        #menu_control{
+            position: absolute;
+            z-index: -2;
+            opacity: 0;
+        }
+        
+        .header{
+            display: flex;
+            width: 100%;
+            background-color: #ffffff;
+            position: relative;
+        }
+        .header a img{
+            width: 105px;
+            height: 56px;
+            margin: 5px;
+        }
+        
+        @media screen and (max-width: 1280px){
+            .header{
+                height: 60px;
+            }
+            .header a img{
+            width: 60px;
+            height: 40px;
+            margin: 0;
+            margin-top: 0px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .header{
+                height: 40px;
+            }
+            .header a img{
+                width: 50px;
+                height: 30px;
+            }
+        }
+
+        .header a span{
+            font-size: 25px;
+            color: #000;
+            line-height: 80px;
+        }
+
+        @media screen and (max-width: 1280px){
+            .header a span{
+            font-size: 20px;
+            line-height: 70px;
+            top: 5px;
+            }
+        }
+
+        @media screen and (max-width: 767px){
+            .header a span{
+            font-size: 15px;
+            line-height: 50px;
+            top: 10000px;
+            }
+        }
+
+        .header .menu_btn{
+            display: none;
+        }
+
+        @media screen and (max-width: 1280px){
+            .header .menu_btn{
+                width: 50px;
+                height: 50px;
+                background-color: #876D5A;
+                display: block;
+                position: absolute;
+                top: 6px;
+                right: 10px;
+                z-index: 999;
+            }
+            .header .menu_btn span{
+                opacity: 0;
+                width: 1px;
+                height: 1px;
+                display: block;
+                overflow: hidden;
+            }
+            .header .menu_btn::before{
+                content: '';
+                position: absolute;
+                height: 2px;
+                left: 10px;
+                width: 30px;
+                background-color:#000;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                box-shadow: 0px 8px 0px #000,
+                            0px -8px 0px #000;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .header .menu_btn{
+                width: 35px;
+                height: 35px;
+                top: 3px;
+                right: 5px;
+            }
+            .header .menu_btn::before{
+                left: 3px;
+                width: 28px;
+            }
+        }
+
+        .header nav{
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: right;
+            width: auto;
+        }
+        .header nav a{
+            font-size: 15px;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            line-height: 50px;
+            margin: 0px 10px;
+        }
+        .header nav a:hover{
+            color: rgb(147, 109, 18);
+            text-decoration: underline 3px;
+        }
+
+        @media screen and (max-width: 1280px){
+            .header {
+                display: block;
+            }
+            .header nav{
+                text-align: left;
+                background-color: #dcb582;
+                width: 80%;
+                height: calc(100vh - 60px);
+                padding: 0;
+                margin: 0;
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                transition: .5s;
+                z-index: 9999;
+            }
+            .drop-down-menu{
+                position: absolute;
+                top: 0px;
+                left: -30px;
+            }
+            .header nav a{
+                width: 200%;
+                display: block;
+                text-decoration: none;
+                color: rgb(0, 0, 0);
+                padding: 10px 20px;
+                border-bottom: 1px solid rgb(0, 0, 0);
+            }
+            .header nav ul.drop-down-menu{
+                display: block;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .header nav{
+                height: calc(100vh - 40px);
+                top: 40px;
+                left: -100%;
+                transition: .5s;
+                z-index: 9999;
+            }
+        }
+
+        #menu_control:checked ~ .header nav{
+            left: 0;
+        }
+
+        .header nav ul.drop-down-menu{
+            display: inline-block;
+        }
+
+        .header nav ul.drop-down-menu > li{
+            float: left; /* 只有第一層是靠左對齊*/
+        }
+
+        @media screen and (max-width: 1200px){
+            .header nav ul.drop-down-menu{
+                display: block;
+            }
+            .header nav ul.drop-down-menu > li{
+                float: none;
+            }
+        }
+
+        .header nav ul.drop-down-menu ul {
+            line-height:10px;
+            padding: 20px;
+            background-color: #ffffff;
+            border:  rgb(147, 109, 18) 2px solid;
+            position: fixed;
+            z-index: 99;
+            margin-left: -40px;
+        }
+
+        .drop-down-menu2{
+            border-radius:10% 10% 10% 10%;
+        }
+
+        .header nav ul.drop-down-menu ul li a:hover {
+            color: rgb(147, 109, 18) ;
+        }
+
+        .header nav ul.drop-down-menu ul { /*隱藏次選單*/
+            opacity: 0;
+            display: none;
+        }
+
+        .header nav ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
+            opacity: 0.8;
+            display: block;
+        }
+        @media screen and (max-width: 1280px){
+            #plus:after{
+                content: "▽";
+                float:right;
+                font-size: 30px;
+            }
+            .header nav ul.drop-down-menu ul {
+                width: 70%;
+                line-height:5px;
+                padding: 10px;
+                background-color: #ffffff;
+                border:  rgb(147, 109, 18) 2px solid;
+                position: fixed;
+                z-index: 99;
+                margin-left: 0px;
+            }
+            .drop-down-menu2{
+                border-radius:30px;
+            }
+            .header nav ul.drop-down-menu ul a{
+                padding: 0;
+                margin: 0px;
+                margin-left: 40px;
+                border-bottom: none;
+            }
+            .header nav ul.drop-down-menu li:hover > ul { 
+                opacity: 1;
+            }
+        }
+        @media screen and (max-width: 767px){
+            
+        }
+
+        .banner{
+            width: 100%;
+            background-color: #5c7887;
+        }
+        .banner1 img{
+            width: 100%;
+        }
+        .banner2{
+            width: 90%;
+            padding: 20px 0;
+            margin: 0 auto;
+        }
+        .banner2 h1{
+            text-align: center;
+        }
+        #web{
+            width: 20px;
+            height: 20px;
+        }
+        @media screen and (min-width: 1280px){
+            .banner{
+                padding: 30px;
+                flex-wrap: nowrap;
+                overflow: hidden;
+            }
+            .banner1{
+                width: 30%;
+                float: left;
+                padding: 10px;
+                margin: 10px 0 10px 40px;
+            }
+            .banner2{
+                width: 60%;
+                float: right;
+                margin-top: 20px;
+            }
+        }
+        @media screen and (min-width: 767px){
+
+        }
+
+        .about{
+            width: 100%;
+            background-color: #b9b9b9;
+            padding: 20px;
+        }
+        .about1{
+            text-align: center;
+        }
+        .about1 span{
+            font-size: 30px;
+            border-bottom: 3px solid #5c7887;
+        }
+        .about2{
+            margin: 0 auto;
+            margin-top: 10px;
+            border: 2px solid #000000;
+            border-radius: 15px;
+            padding: 5px;
+        }
+        @media screen and (min-width: 1280px){
+            .wrap1{
+                display: flex;
+                margin: 0 auto;
+                padding: 20px;
+                flex-wrap: wrap;
+            }
+            .about2{
+                width: 40%;
+                margin: 0 auto;
+                margin-top: 10px;
+                padding: 10px;
+            }
+            .about3{
+                width: 50%;
+                float: left;
+                padding-right: 10px;
+            }
+            .about4{
+                width: 50%;
+                float: left;
+                padding-right: 10px;
+            }
+        }
+        @media screen and (min-width: 767px){
+
+        }
+
+        
+        .work{
+            width: 100%;
+        }
+        .workk{
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        .work1{
+            text-align: center;
+        }
+        .work1 span{
+            font-size: 30px;
+            border-bottom: 3px solid #5c7887;
+        }
+        .work2 {
+            text-align: center;
+        }
+        .work2 img{
+            width: 200px;
+            width: 200px;
+            padding: 10px;
+        }
+        .work33{
+            position: relative;
+        }
+        article{
+            border-radius: 15px;
+            background-color: #dfcfbf;
+            padding: 5px;
+            color: #000;
+            max-height: 70px;
+            overflow: hidden;
+            transition: max-height 2s;
+            text-align: justify;
+            margin: 20px 0;
+        }
+        article.open{
+            max-height: 700px;
+        }
+        .more{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgb(115, 115, 115);
+            color: #ffffff;
+            border-radius: 15px;
+            font-size: 15px;
+        }
+        @media screen and (min-width: 1280px){
+            .work1{
+                margin-top: 20px;
+            }
+            .workk{
+                display: flex;
+            }
+            .work2 {
+                text-align:left;
+            }
+            .work3{
+                width: 75%;
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+            article{
+                padding: 10px;
+                max-height: 80px;
+            }
+            .workk3{
+                display: flex;
+            }
+            .work4{
+                width: 50%;
+                float: left;
+            }
+            .work5{
+                width: 50%;
+                float: left;
+            }
+            .more:hover{
+                cursor: pointer;
+                background-color: #000;
+            }
+        }
+        @media screen and (min-width: 767px){
+
+        }
+
+        .footer{
+            width: 100%;
+            background-color: hsla(205, 53%, 40%, 0.776);
+            color: rgb(0, 0, 0);
+        }
+        
+        .footer img{
+            width: 80px;
+        }
+        .footer a{
+            font-size: 10px;
+        }
+        @media screen and (max-width: 1200px){
+        }
+        @media screen and (max-width: 767px){
+            .footer{
+                padding: 2% 0 2% 1%;
+            }
+            .footer img{
+                width: 40px;
+            }
+            .footer a{
+                font-size: 5px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+    <input type="checkbox" name="" id="menu_control">
+
+    <div class="header">
+        <a href="Must.html" class="logo">
+         <img src="img/newmust.JPG">
+        </a>
+        <a>
+        <span style="font-family: serif;">明新科大資訊管理系實習網站</span> 
+        <td valign="bottom">
+        </a>
+        <label for="menu_control" class="menu_btn">
+            <span>選單</span>
+        </label>
+        <nav class="navbar">
+            <ul class="drop-down-menu" style="list-style: none;">
+                <li><a href="index.html" class="item" id="AAA">首頁</a></li>
+                <li><a href="最新消息.html" class="item">最新消息</a></li>
+                <li><a href="實習資訊.html" class="item" id="plus">實習資訊</a>
+                    <ul class="drop-down-menu2" style="list-style: none;">
+                        <li><a href="校外實習介紹.html" class="item">校外實習介紹</a></li>
+                        <li><a href="最新職缺.html" class="item">最新實習介紹</a></li>
+                        <li><a href="實習注意事項.html" class="item">實習注意事項</a></li>
+                        <li><a href="實習寶典.html" class="item">實習寶典</a></li>
+                        <li><a href="法規與表單.html" class="item">法規與表單</a></li>
+                    </ul>
+                </li>
+                <li><a href="Ltd.html" class="item">合作廠商</a></li>
+                <li><a href="實習成就.html" class="item">實習成就</a>
+                    <ul class="drop-down-menu5" style="list-style: none;">
+                        <li><a href="實習心得分享.html" class="item">實習心得分享</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#" class="item" id="plus">上傳資料</a>
+                    <ul class="drop-down-menu2" style="list-style: none;">
+                        <li><a href="實習週記.html" class="item">實習週記</a></li>
+                        <li><a href="期中報告.html" class="item">期中報告</a></li>
+                        <li><a href="期末報告.html" class="item">期末報告</a></li>
+                    </ul>
+                </li>
+                <li><a href="FQA.html" class="item">常見問題</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="banner">
+        <div class="banner1">
+            <img src="img/智邦公司.png">
+        </div>
+        <div class="banner2">
+            <h1>智邦科技股份有限公司</h1>
+            <p>地址: 300新竹市東區研新三路1號</p>
+            <p>公司簡介：
+                全球網路通訊設備設計製造的領航者，擁有32年的網通產品設計開發經驗，團隊致力於開發生產先進的開放硬體和軟體整合之解決方案，主要產品為高速乙太網路交換器、網路接取設備、 網路應用設備與無線網路產品/寬頻網路。
+            </p>
+            <center>
+                <a href="https://www.accton.com.tw/">
+                    <img id="web" src="img/網站小圖.png">
+                </a>
+            </center>
+        </div>
+    </div>
+
+    <div class="about">
+            <div class="about1">
+                <span id="aaaaaa" style="font-family: serif;">&emsp;&emsp;歷年實習&emsp;&emsp;</span>
+            </div>
+        <div class="wrap1">
+            <div class="about2">
+                <h1>部門:109開發一課</h1>
+                <div class="about3">
+                    <h3>實習工作內容：</h3>
+                    <p>1.文書處理</br>
+                    2.資料整理</br>
+                    3.程式優化與改寫</br>
+                    4.協助User解決問題</br>
+                    5.協助建立Stored Procedures</br>
+                    </p>
+                </div>
+                <div class="about4">
+                    <h3>須具備能力：</h3>
+                    <p>1.基本程式語法</br>
+                    2.細心與耐心</br>
+                    3.善於溝通</br>
+                    4.適應力</br>
+                    5.積極</br>
+                    </p>
+                </div>
+            </div>
+            <div class="about2">
+                <h1>部門:109開發四課</h1>
+                <div class="about3">
+                    <h3>實習工作內容：</h3>
+                    <p>1.使用 C# 寫網頁</br>
+                    2.了解 Asp.Net MVC 的架構</br>
+                    3.能看懂、使用SQL語法</br>
+                    </p>
+                </div>
+                <div class="about4">
+                    <h3>須具備能力：</h3>
+                    <p>1.C#、Asp.Net MVC、Html、JavaScript、SQL、Ajax、jQuery</br>
+                    2.細心、表達能力、勇敢發問</br>
+                    3.基礎程式能力、邏輯力</br>
+                    4.能獨立思考、舉一反三</br>
+                    </p>
+                </div>
+            </div>
+            <div class="about2">
+                <h1>部門:109系統整合一課</h1>
+                <div class="about3">
+                    <h3>實習工作內容：</h3>
+                    <p>1.檢查資料</br>
+                    2.撰寫Asp.Net MVC專案</br>
+                    3.Lotus Notes</br>
+                    </p>
+                </div>
+                <div class="about4">
+                    <h3>須具備能力：</h3>
+                    <p>1.C# 基本概念</br>
+                    2.MS SQL基本概念</br>
+                    3.細心、耐心、積極</br>
+                    </p>
+                </div>
+            </div>
+            <div class="about2">
+                <h1>部門:109系統服務</h1>
+                <div class="about3">
+                    <h3>實習工作內容：</h3>
+                    <p>1.user電腦叫修服務</br>
+                    2.協助user汰換設備</br>
+                    3.維護管理資產系統</br>
+                    4.協助購買電腦設備零組件</br>
+                    5.處理主管交代事項</br>
+                    6.設備驗收及報廢</br>
+                    </p>
+                </div>
+                <div class="about4">
+                    <h3>須具備能力：</h3>
+                    <p>1.良好的溝通能力</br>
+                    2.解決事情的能力</br>
+                    3.電腦方面的相關知識</br>
+                    4.責任感</br>
+                    5.抗壓性</br>
+                    </p>
+                </div>
+            </div>
+            <div class="about2">
+                <h1>部門:109系統開發四課</h1>
+                <div class="about3">
+                    <h3>實習工作內容：</h3>
+                    <p>1.檢查更新Web Server、防毒軟體</br>
+                    2.維護修改Shopfloor程式</br>
+                    3.修復客戶的產測資料</br>
+                    4.修改MSSQL的預存程序(Stored Procedure)</br>
+                    5.以ASP.NET MVC架構開發系統。Ex:5S稽核系統、特採放行申請系統、上下崗打卡系統……</br>
+                    </p>
+                </div>
+                <div class="about4">
+                    <h3>須具備能力：</h3>
+                    <p>1.程式語言:C#、HTML、Razor、javascript、AJAX</br>
+                    2.資料庫:MSSQL、Oracle</br>
+                    3.軟體開發工具: Microsoft Visual Studio、DevExpress</br>
+                    4.溝通力</br>
+                    </p>
+                </div>
+            </div>
+            <div class="about2">
+                <h1>部門:109資訊服務課</h1>
+                <div class="about3">
+                    <h3>實習工作內容：</h3>
+                    <p>1.維持電腦問題叫修的品質與服務</br>
+                    2.維護庫房設備與異動電腦資產管理</br>
+                    3.維持使用者良好辦公環境(出機前的驗證)</br>
+                    4.協助其他硬體需求</br>
+                    5.協助主管交辦事項</br>
+                    </p>
+                </div>
+                <div class="about4">
+                    <h3>須具備能力：</h3>
+                    <p>1.EXCEL編輯</br>
+                    2.軟、硬體相關知識</br>
+                    3.中英文擅打</br>
+                    4.語言能力(ex.英文)</br>
+                    </p>
+                </div>
+            </div>
+            <div class="about2">
+                <h1>部門:109運營整合二課</h1>
+                    <div class="about3">
+                    <h3>實習工作內容：</h3>
+                    <p>1.了解MVC架構與開發</br>
+                    2.完成主管交辦事項</br>
+                    3.網頁專案開發與設計</br>
+                    4.日常更新維護</br>
+                    </p>
+                </div>
+                <div class="about4">
+                    <h3>須具備能力：</h3>
+                    <p>1.基礎程式能如:C#、MSSQL、oracle、html、JavaScript，必非只會一種程式，就能完成網頁開發設計專案</br>
+                    2.溝通與表達能力:需適時提出問題與人溝通，尤其需與他人協同合作表達極為重要</br>
+                    3.積極、細心:在修改程式要有耐心不可消極，使用資料庫要極為小心謹慎，不甚疏忽會造成不可想像後果</br>
+                    4.舉一反三:需學習內容甚多，多思考使學習更快速</br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="work">
+            <div class="work1">
+                <span id="aaaaaa" style="font-family: serif;">&emsp;&emsp;實習職缺&emsp;&emsp;</span>
+            </div>
+        <div class="workk">
+            <div class="work2">
+                <img src="img/智邦.png">
+            </div>
+            <div class="work3">
+                <div class="work33">
+                    <article id="content">
+                        <p style="font-family: serif;">部門:  開發四課</p>
+                        <p class="workk3">需求人數: 2</p>
+                        <p class="work4">工作內容:</br>
+                            1.Web Application C# </br>
+                            2.Database Application Oracle, MS SQL</br>
+                        </p>
+                        <p class="work5">所需技能:</br>
+                            1.C# ,SQL</br>
+                        </p>
+                    </article>
+                    <button class="more" onclick="showMore()">查看</button>
+                </div>
+                <div class="work33">
+                    <article id="content1">
+                        <p style="font-family: serif;">部門:  系統整合一課</p>
+                        <p class="workk3">需求人數: 1</p>
+                        <p class="work4">工作內容:</br>
+                            1.Sharepoint reportal monitor</br>
+                            2.Sharepoint development program</br>
+                            3.C# Web Application web development & maintain</br>
+                            4.Database MS SQL maintain</br>
+                            5.Line Bot study</br>
+                        </p>
+                        <p class="work5">所需技能:</br>
+                        </p>
+                    </article>
+                    <button class="more" onclick="showMore1()">查看</button>
+                </div>
+                <div class="work33">
+                    <article id="content2">
+                        <p style="font-family: serif;">部門:  MIS</p>
+                        <p class="workk3">需求人數: 2</p>
+                        <p class="work4">工作內容:</br>
+                            1.負責總部使用者電腦問題處理</br>
+                            2.AD帳號基本管理與問題排除</br>
+                            3.硬體問題判斷與零件更換</br>
+                            4.SOP文件管理中心的檔案製作與更新</br>
+                            5.會議室巡檢與問題協助</br>
+                            6.郵件問題處理與帳號問題排除</br>
+                            7.資訊安全問題處理(EX: 中毒/合規/Patch修補等)</br>
+                            8.協助專案進行</br>
+                            9.其它主管交辦之任務</br>
+                        </p>
+                        <p class="work5">所需技能:</br>
+                            1.對資訊/電腦/自動化管理有濃厚興趣</br>
+                            2.開朗/外向</br>
+                            3.有基本的Windows OS操作及網路基礎</br>
+                            4.熟Office軟體操作</br>
+                            5.邏輯能力佳</br>
+                        </p>
+                    </article>
+                    <button class="more" onclick="showMore2()">查看</button>
+                </div>
+                <div class="work33">
+                    <article id="content3">
+                        <p style="font-family: serif;">部門:  技術開發(竹南廠)</p>
+                        <p class="workk3">需求人數: 1</p>
+                        <p class="work4">工作內容:</br>
+                            1.互動式系統開發與維護，包含前端網站建置，後端資料運算與分析</br>
+                            2.網管系統開發與維護</br>
+                            3.資料庫管理與維護</br>
+                            4.動態看板管理與維護</br>
+                            5.配合專案推進、任務支援</br>
+                            6.其它主管交辦事項</br>
+                        </p>
+                        <p class="work5">所需技能:</br>
+                            1.熟悉Python, JavaScript, JSON, Azure , HTML , SQL語法等等</br>
+                            2.熟悉 Windows/Linux 作業系統操作管理</br>
+                            3.熟悉網頁系統架構並對各式網頁相關語言有基礎了解</br>
+                            4.熟悉資料庫設計與資料庫系統原理尤佳</br>
+                        </p>
+                    </article>
+                    <button class="more" onclick="showMore3()">查看</button>
+                </div>
+                <div class="work33">
+                    <article id="content4">
+                        <p style="font-family: serif;">部門:  技術服務(竹南廠) MIS</p>
+                        <p class="workk3">需求人數: 2</p>
+                        <p class="work4">工作內容:</br>
+                            1.資訊問題處理一線窗口</br>
+                            2.資訊設備軟、硬體，安裝及問題故障排除</br>
+                            3.MIS維修區維護：</br>
+                                A.設備、耗材進出登記。</br>
+                                B.維持維修區環境整潔。</br>
+                            4.資訊設備整理：</br>
+                                A.繳回設備軟、硬體整理</br>
+                                B.資訊設備報廢拆解</br>
+                            5.叫修問題處理登記、紀錄</br>
+                            6.每日會議室無線巡查、各層樓機櫃巡查</br>
+                            7.協助資訊設備盤點</br>
+                            8.配合工程師處理IT專案</br>
+                            9.主管交辦事項</br>
+                        </p>
+                        <p class="work5">所需技能:</br>
+                            1.熟悉 Windows/Linux 作業系統操作管理</br>
+                            2.有電腦組裝經驗佳，但沒經驗亦可</br>
+                            3.不怕與人接觸，具有一顆服務熱忱的心</br>
+                            4.需協助搬運資訊設備，需有責任心及良好的學習態度</br>
+                            5.有基本網路架構及實務設備概念，OSI七層概念 經驗佳</br>
+                        </p>
+                    </article>
+                    <button class="more" onclick="showMore4()">查看</button>
+                </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <center>
+            <img src="img/明新.png"><br>
+            <a>明新科技大學訊管理系 版權所有&copy;All Rights Reserved. Designed and Maintained by IM MUST </a>
+        </center>
+    </div>
+
+</body>
+<script src="javascript"></script>
