@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <style>
+
+        .top{
+            background-color: #000000;
+            text-align: center;
+            padding: 5px;
+        }
+        .top p{
+            color: #fff;
+            display: inline;
+            margin-right: 5px;
+        }
+        #topp{
+            color: #fff;
+            background-color: #000;
+            border: 1px solid rgb(255, 255, 255);
+        }
+        #topp:hover{
+            color: rgb(255, 179, 0);
+            border: 1px solid rgb(255, 179, 0);
+        }
+        
+
+        #menu_control{
+            position: absolute;
+            z-index: -2;
+            opacity: 0;
+        }
+
+
+        .header{
+            display: flex;
+            width: 100%;
+            background-color: #ffffff;
+            position: relative;
+        }
+        .header a img{
+            width: 105px;
+            height: 56px;
+            margin: 5px;
+        }
+        
+        @media screen and (max-width: 1280px){
+            .header{
+                height: 60px;
+            }
+            .header a img{
+            width: 60px;
+            height: 40px;
+            margin: 0;
+            margin-top: 0px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .header{
+                height: 40px;
+            }
+            .header a img{
+                width: 50px;
+                height: 30px;
+            }
+        }
+
+        .header a span{
+            font-size: 25px;
+            color: #000;
+            line-height: 80px;
+        }
+
+        @media screen and (max-width: 1280px){
+            .header a span{
+            font-size: 20px;
+            line-height: 70px;
+            top: 5px;
+            }
+        }
+
+        @media screen and (max-width: 767px){
+            .header a span{
+            font-size: 15px;
+            line-height: 50px;
+            top: 10000px;
+            }
+        }
+
+        .header .menu_btn{
+            display: none;
+        }
+
+        @media screen and (max-width: 1280px){
+            .header .menu_btn{
+                width: 50px;
+                height: 50px;
+                background-color: #876D5A;
+                display: block;
+                position: absolute;
+                top: 6px;
+                right: 10px;
+                z-index: 999;
+            }
+            .header .menu_btn span{
+                opacity: 0;
+                width: 1px;
+                height: 1px;
+                display: block;
+                overflow: hidden;
+            }
+            .header .menu_btn::before{
+                content: '';
+                position: absolute;
+                height: 2px;
+                left: 10px;
+                width: 30px;
+                background-color:#000;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                box-shadow: 0px 8px 0px #000,
+                            0px -8px 0px #000;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .header .menu_btn{
+                width: 35px;
+                height: 35px;
+                top: 3px;
+                right: 5px;
+            }
+            .header .menu_btn::before{
+                left: 3px;
+                width: 28px;
+            }
+        }
+
+        .header nav{
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: right;
+            width: auto;
+        }
+        .header nav a{
+            font-size: 15px;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            line-height: 50px;
+            margin: 0px 10px;
+        }
+        .header nav a:hover{
+            color: rgb(147, 109, 18);
+            text-decoration: underline 3px;
+        }
+
+        @media screen and (max-width: 1280px){
+            .header {
+                display: block;
+            }
+            .header nav{
+                text-align: left;
+                background-color: #dcb582;
+                width: 80%;
+                height: calc(100vh - 60px);
+                padding: 0;
+                margin: 0;
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                transition: .5s;
+                z-index: 9999;
+            }
+            .drop-down-menu{
+                position: absolute;
+                top: 0px;
+                left: -30px;
+            }
+            .header nav a{
+                width: 200%;
+                display: block;
+                text-decoration: none;
+                color: rgb(0, 0, 0);
+                padding: 10px 20px;
+                border-bottom: 1px solid rgb(0, 0, 0);
+            }
+            .header nav ul.drop-down-menu{
+                display: block;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .header nav{
+                height: calc(100vh - 40px);
+                top: 40px;
+                left: -100%;
+                transition: .5s;
+                z-index: 9999;
+            }
+        }
+
+        #menu_control:checked ~ .header nav{
+            left: 0;
+        }
+
+        .header nav ul.drop-down-menu{
+            display: inline-block;
+        }
+
+        .header nav ul.drop-down-menu > li{
+            float: left; /* 只有第一層是靠左對齊*/
+        }
+
+        @media screen and (max-width: 1200px){
+            .header nav ul.drop-down-menu{
+                display: block;
+            }
+            .header nav ul.drop-down-menu > li{
+                float: none;
+            }
+        }
+
+        .header nav ul.drop-down-menu ul {
+            line-height:10px;
+            padding: 20px;
+            background-color: #ffffff;
+            border:  rgb(147, 109, 18) 2px solid;
+            position: fixed;
+            z-index: 99;
+            margin-left: -40px;
+        }
+
+        .drop-down-menu2{
+            border-radius:10% 10% 10% 10%;
+        }
+
+        .header nav ul.drop-down-menu ul li a:hover {
+            color: rgb(147, 109, 18) ;
+        }
+
+        .header nav ul.drop-down-menu ul { /*隱藏次選單*/
+            opacity: 0;
+            display: none;
+        }
+
+        .header nav ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
+            opacity: 0.8;
+            display: block;
+        }
+        @media screen and (max-width: 1280px){
+            #plus:after{
+                content: "▽";
+                float:right;
+                font-size: 30px;
+            }
+            .header nav ul.drop-down-menu ul {
+                width: 70%;
+                line-height:5px;
+                padding: 10px;
+                background-color: #ffffff;
+                border:  rgb(147, 109, 18) 2px solid;
+                position: fixed;
+                z-index: 99;
+                margin-left: 0px;
+            }
+            .drop-down-menu2{
+                border-radius:30px;
+            }
+            .header nav ul.drop-down-menu ul a{
+                padding: 0;
+                margin: 0px;
+                margin-left: 40px;
+                border-bottom: none;
+            }
+            .header nav ul.drop-down-menu li:hover > ul { 
+                opacity: 1;
+            }
+        }
+        @media screen and (max-width: 767px){
+            
+        }
+
+
+        .banner1 img{
+            width: 100%;
+        }
+
+        .navbar22{
+            text-align: center;
+        }
+        .navbar2{
+            background-color: #fff;
+            color: #000;
+            display: inline-block;
+            border: 1px solid rgb(0, 0, 0);
+            padding: 5px 30px;
+            margin: 20px 10px 0px 10px;
+            border-radius: 5px;
+            flex-wrap: wrap;
+        }
+        .navbar2:hover{
+            color: rgb(147, 109, 18) ;
+            border: 1px solid rgb(147, 109, 18);
+        }
+        @media screen and (max-width: 1280px){
+            .navbar2{
+                padding: 5px 30px;
+                margin: 20px 20px 0 5px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .navbar2{
+                padding: 5px 10px;
+                margin: 20px 25px 0 0;
+            }
+        }
+        
+        .about{
+            width: 100%;
+            background-color: #5c7887;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        .itemw{
+            font-size: 40px;
+        }
+        #c1{
+            color: #ffffff;
+        }
+
+        @media screen and (max-width: 1280px){
+            .about{
+                padding-top: 20px;
+            }
+            .itemw{
+                font-size: 30px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .about{
+                padding: 10px ;
+            }
+            .itemw{
+                font-size: 20px;
+            }
+        }
+
+        .wrap{
+            display: flex;
+            padding-left: 0px;
+        }
+
+        .itemabout{
+            width: 300px;
+            height: 475px;
+            position: relative;
+            margin: 0 auto;
+        }
+        .itemabout img{
+            width: 210px;
+            height: 175px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .itemabout strong{
+            color: #fff;
+            font-size: 22px;
+        }
+        
+        .itemabout p{
+            color: #fff;
+            font-size: 20px;
+        }
+
+        #morer{
+            color: #000;
+        }
+        #morer:hover{
+            color: rgb(255, 179, 0);
+        }
+        
+        @media screen and (max-width: 1280px){
+            .wrap{
+                width: 90%;
+                flex-wrap: nowrap;
+            }
+            .itemabout{
+                width: 250px;
+                height: 475px;
+                margin: 0 0 10px 5%;
+            }
+            .itemabout strong{
+                font-size: 17px;
+            }
+            
+            .itemabout p{
+                font-size: 15px;
+            } 
+        }
+        @media screen and (max-width: 767px){
+            .wrap{
+                width: 380px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .itemabout{
+                width: 200px;
+                height: 250px;
+                margin: 0 auto;
+                margin-bottom: 10px;
+            }
+            .itemabout img{
+                width: 150px;
+                height: 125px;
+                margin-bottom: 0px;
+            }
+            .itemabout strong{
+                font-size: 10px;
+            }
+            
+            .itemabout p{
+                font-size: 10px;
+                margin-bottom: 0px;
+            }
+        }
+
+        .imgh{
+            text-align: center;
+        }
+
+        .close{
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            background-color: rgb(77, 4, 4);
+            color: #fff;
+            border-radius: 15px;
+            font-size: 20px;
+        }   
+
+        .tab{
+            background-color: rgb(77, 4, 4);
+            color: #fff;
+            padding: 6px 10px;
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            border-radius: 15px;
+        }
+        
+        @media screen and (max-width: 1280px){
+        }
+        @media screen and (max-width: 767px){
+            .tab{
+                font-size: 10px;
+                padding: 0px 5px;
+            }
+            .close{
+                bottom: 10px;
+                right: 5px;
+                border-radius: 15px;
+                font-size: 10px;
+            }
+        } 
+
+        dialog{
+            width: 850px;
+            background-color: #faebd7;
+            border: none;
+            box-shadow: 0 2px 6px #ccc;
+            border-radius: 10px;
+        }
+        .infoModal img{
+            width: 270px;
+            height: 225px;
+        }
+        #ppp{
+            color: #000;
+        }
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        @media screen and (max-width: 1280px){
+            dialog{
+                width: 500px;
+                position:absolute;
+                top: 400px;
+                left: 10px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .infoModal img{
+                width: 210px;
+                height: 175px;
+            }
+            dialog{
+                width: 300px;
+                position:absolute;
+                top: 800px;
+                left: 10px;
+            }
+        }
+
+        .ltd{
+            width: 100%;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .itemw{
+            margin-bottom: 20px;
+        }
+
+        .wrap1{
+            width: 90%;
+            display: flex;
+        }
+
+        .itemltd{
+            height: 280px;
+            width: 210px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 15px;
+        }
+
+        .itemltd a{
+            color: #000;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+        }
+        .itemltd a:hover{
+            color: rgb(147, 109, 18);
+            text-decoration: underline 3px;
+        }
+
+        .itemltd img{
+            width: 225px;
+            height: 200px;
+            border-radius: 100px;
+            margin-bottom: 30px;
+        }
+
+        @media screen and (max-width: 1280px){
+            .wrap1{
+                width: 100%;
+                margin: auto;
+                margin-bottom: -80px;
+                flex-wrap: wrap;
+            }
+            .itemltd{
+                height: 275px;
+                width: 175px;
+                margin: 1.2%;
+            }
+            .itemltd img{
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+            #ltd1{
+                font-size: 15px;
+                position: absolute;
+                top: 110px;
+                left: 8px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .wrap1{
+                width: 100%;
+                margin: 0 0 0 3px;
+                flex-wrap: wrap;
+            }
+            .itemltd{
+                height: 175px;
+                width: 175x;
+                margin: 0px;
+            }
+            #ltd1{
+                font-size: 10px;
+                position: absolute;
+                top: 110px;
+                left: 30px;
+            }
+            .itemltd img{
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        .ltdimg{
+            width: 100%;
+            background-color: hsl(205, 53%, 40%);
+        }
+        .ltdimgg{
+            width: 90%;
+        }
+        .ltdimg1{
+           padding: 50px 10px 30px 10px;
+           position: relative;
+        }
+
+        @media screen and (max-width: 1280px){
+            .ltdimg1{
+                position: relative;
+            }
+            .item1{
+                width: 160px;
+                height: 120px;
+            }
+            .item2{
+                width: 160px;
+                height: 160px;
+            }
+        }
+        @media screen and (max-width: 767px){
+            .ltdimg1{
+                position: relative;
+            }
+            .item1{
+                width: 72px;
+                height: 54px;
+            }
+            .item2{
+                width: 72px;
+                height: 72px;
+            }
+        }
+
+        /*#w1{
+            width: 400px;
+            height: 300px;
+            font-size: 32px;
+			color: rgb(53, 41, 41);
+			position:absolute;
+			top:100px;
+			left:130px;
+            opacity: 0;
+        }
+        #w1:hover{
+            opacity: 1;
+        }
+        #w2{
+            width: 400px;
+            height: 400px;
+            font-size: 32px;
+			color: rgb(0, 0, 0);
+			position:absolute;
+			top:50px;
+			left:534px;
+            opacity: 0;
+        }
+        #w2:hover{
+            opacity: 1;
+        }*/
+
+        .footer{
+            width: 100%;
+            background-color: hsla(205, 53%, 40%, 0.776);
+            color: rgb(0, 0, 0);
+        }
+        
+        .footer img{
+            width: 80px;
+        }
+        .footer a{
+            font-size: 10px;
+        }
+        @media screen and (max-width: 1200px){
+        }
+        @media screen and (max-width: 767px){
+            .footer{
+                padding: 2% 0 2% 1%;
+            }
+            .footer img{
+                width: 40px;
+            }
+            .footer a{
+                font-size: 5px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+    <input type="checkbox" name="" id="menu_control">
+
+    <div class="top">
+        <p>請同學準時繳交實習周記</p>
+        <button onclick="window.location.href='最新消息.html';" id="topp">最新消息</button>
+    </div>
+
+    <div class="header">
+        <a href="Must.html" class="logo">
+            <img src="img/newmust.JPG">
+        </a>
+        <a>
+        <span style="font-family: serif;">明新科大資訊管理系實習網站</span> 
+        <td valign="bottom">
+        </a>
+        <label for="menu_control" class="menu_btn">
+            <span>選單</span>
+        </label>
+        <nav class="navbar">
+            <ul class="drop-down-menu" style="list-style: none;">
+                <li><a href="index.html" class="item" id="AAA">首頁</a></li>
+                <li><a href="最新消息.html" class="item">最新消息</a></li>
+                <li><a href="實習資訊.html" class="item" id="plus">實習資訊</a>
+                    <ul class="drop-down-menu2" style="list-style: none;">
+                        <li><a href="校外實習介紹.html" class="item">校外實習介紹</a></li>
+                        <li><a href="最新職缺.html" class="item">最新實習介紹</a></li>
+                        <li><a href="實習注意事項.html" class="item">實習注意事項</a></li>
+                        <li><a href="實習寶典.html" class="item">實習寶典</a></li>
+                        <li><a href="法規與表單.html" class="item">法規與表單</a></li>
+                    </ul>
+                </li>
+                <li><a href="Ltd.html" class="item">合作廠商</a></li>
+                <li><a href="實習成就.html" class="item">實習成就</a>
+                    <ul class="drop-down-menu5" style="list-style: none;">
+                        <li><a href="實習心得分享.html" class="item">實習心得分享</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="上傳資料.html" class="item" id="plus">上傳資料</a>
+                    <ul class="drop-down-menu2" style="list-style: none;">
+                        <li><a href="實習週記.html" class="item">實習週記</a>
+                        </li>
+                        <li><a href="期中報告.html" class="item">期中報告</a>
+                        </li>
+                        <li><a href="期末報告.html" class="item">期末報告</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="FQA.html" class="item">常見問題</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="banner1">
+        <img src="img/首頁.jpg">
+    </div>
+    
+    <div class="navbar22">
+        <ul style="list-style: none;">
+            <button onclick="window.location.href='最新消息.html';" class="navbar2">&emsp;&emsp;最新消息&emsp;&emsp;</button>
+            <button onclick="window.location.href='實習資訊.html';"  class="navbar2">&emsp;實習相關資訊&emsp;</button>
+            <button onclick="window.location.href='Ltd.html';" class="navbar2">&emsp;合作廠商資訊&emsp;</button>
+            <button onclick="window.location.href='實習成就.html';" class="navbar2">&emsp;&emsp;實習成就&emsp;&emsp;</button>
+            <button onclick="window.location.href='上傳資料.html';" class="navbar2">&emsp;實習資料上傳&emsp;</button>
+            <button  class="navbar2">&ensp;常見問題(Q&A)&ensp;</button>
+        </ul>
+    </div>
+
+    <div class="about">
+        <center>
+            <div class="itemw">
+                <span id="c1" style="font-family: serif;">實習成就</span>
+            </div>
+        </center>
+        <div class="wrap">
+            <div class="itemabout">
+                <img src ="img/心得照片1.jpg" alt ="">
+                <p> </p>
+                <strong>智邦科技股份有限公司</strong>
+                <p>實習部門：開發四課</p>
+                <p>實習學生：歐芳宜</p>
+                <p>目前實習約三個月收穫了許多東西，包括以前沒接觸過的程式語言及使用MVC架構撰寫專案，還有很多未接觸過的領域...</p>
+                <button class="tab", id="tab1">more</button>
+                <dialog class="infoModal" id="infoModal1">
+                    <img src ="img/心得照片1.jpg" alt ="">
+                    <h1>智邦科技股份有限公司</h1>
+                    <p id="ppp">實習部門：開發四課</p>
+                    <p id="ppp">實習學生：歐芳宜</p>
+                    <p id="ppp">目前實習約三個月收穫了許多東西，包括以前沒接觸過的程式語言及使用MVC架構撰寫專案，還有很多未接觸過的領域，像是在學校學網頁都是基礎畫面瀏覽觀看，進公司後才了解網頁架設與前後端差別應用，在工作上所使用的程式語法，和學校所學有所不同，能實際應用在工作上還有很多不足地方。一個小小錯誤都會導致程式無法執行，或是語法使用不當也到達不了預期效果，當真的開始理解程式架構，就會較得心應手知道該從何處下手排除錯誤。在HTML的語法錯誤，是最難在debug中找到真正問題點，要慢慢逐行找尋錯誤，非常需要有恆心與毅力，剛開始遇到密密麻麻程式堆會排斥閱讀，甚至會想放棄投降，但到現在不會這麼認為，反而更想一探究竟找出問題癥結點去破解。
+                    在每次的協同合作專案開發，都會頻頻碰上很多挫折與困境，這時的溝通表達就相對重要些，若表達不夠清楚，會耗費大半時間在理解認知上的差異，待對方釐清問題後，要在短時間內消化吸收理解，才能克服眼前難關。在這短短三個月實習中，領受了各方面知識，也了解許多身為一個設計開發者，需要去探討及思考的問題有那些。</p>
+                    <button class="close", id="close1">close</button>
+                </dialog>
+            </div>
+            <div class="itemabout">
+                <img src ="img/心得照片2.jpg" alt ="">
+                <p></p>
+                <strong>捷創股份有限公司</strong>
+                <p>實習部門：行政管理部</p>
+                <p>實習學生：方翊真</p>
+                <p>轉眼間一年的實習就快要結束了，這份實習工作對於我們這些即將要出社會的同學們而言，都是既辛苦又難忘的寶貴經驗...</p>
+                <button class="tab", id="tab2">more</button>
+                <dialog class="infoModal" id="infoModal2">
+                    <img src ="img/心得照片2.jpg" alt ="">
+                    <h1>捷創股份有限公司</h1>
+                    <p id="ppp">實習部門：行政管理部</p>
+                    <p id="ppp">實習學生：方翊真</p>
+                    <p id="ppp">轉眼間一年的實習就快要結束了，這份實習工作對於我們這些即將要出社會的同學們而言，都是既辛苦又難忘的寶貴經驗，雖然說已提前脫離大學生活，但是我們想去實習就是為了想踏出舒適區提前學習東西瞭解社會，在實習的一年中發現很多事情也了解社會不再像學生時期那麼簡單，不再像是在學校讀書那樣的紙上談兵，在實習中去學習如何把課本上學習到的知識適當的運用在工作上，也瞭解很多是學生時期中不會有的社會經驗，不再是死板的讀書 而是應該視情況去靈機應變在這期間裡學除了習到上述說的那些事物 也從中了解到自己還有哪些的不足，並從中改正並藉由失誤中學習，也希望能讓自己在未來不管事工作處事或待人都能成為更好更有能力的人。</p>
+                    <button class="close", id="close2">close</button>
+                </dialog>
+            </div>
+            <div class="itemabout">
+                <img src ="img/心得照片3.png" alt ="">
+                <p></p>
+                <strong>遠東金士頓科技股份有限公司</strong>
+                <p>實習部門：設計工程</p>
+                <p>實習學生：彭雅婷</p>
+                <p>我來金士頓實習也已經快一年了，在這段時間裡，我覺得自己學到了很多的新東西，像是我對硬體本來是完全不熟、沒在關注的...</p>
+                <button class="tab", id="tab3">more</button>
+                <dialog class="infoModal" id="infoModal3">
+                    <img src ="img/心得照片3.png" alt ="">
+                    <h1>遠東金士頓科技股份有限公司</h1>
+                    <p id="ppp">實習部門：設計工程</p>
+                    <p id="ppp">實習學生：彭雅婷</p>
+                    <p id="ppp">我來金士頓實習也已經快一年了，在這段時間裡，我覺得自己學到了很多的新東西，像是我對硬體本來是完全不熟、沒在關注的，但是因為來了金士頓實習，我現在對硬體也有了一定程度的了解，不再是一問三不知。而我的英文程度感覺也有了提升，因為工作環境大家對專有名詞都是說英文居多，所以在耳濡目染的情況下，自己不知不覺間也多學會了很多新單字。就自我成長方面，我真的覺得自己是成長了許多，收穫滿滿的。
+
+                    而我基本上在公司的作息模式已固定，每天都是重複性的工作居多，能夠再新學到的東西真的也有限，所以如果大家想多學一些東西的話，我覺得靠自己去「發問」很重要。基本上敢問的話正職們都會很樂意教你們，所以要好好把握每一次能發問的機會，然後盡情去問，不要不敢或不好意思問，因為我覺得除了「工作能力」之外，我們在「溝通表達」和「人際關係」方面也是很重要的，多問正職問題的話就能跟他們多接觸，多接觸的話就能多相處，關係可能也就會變得更好，我認為如何和上司、正職們相處關係良好，這也是我們實習裡的一大課題，所以不要畏懼和別人接觸，因為有時候可能就是因為你現在付出的努力，而改變了大家對你的看法，以及你自己的心態。</p>
+                    <button class="close", id="close3">close</button>
+                </dialog>
+            </div>
+        </div>
+        <center>
+        <a href="#" id="morer">完整實習成就...</a>
+        </center>
+    </div>
+
+    
+    <center>
+    <div class="ltd">
+        <div class="itemw">
+            <span id="c2" style="font-family: serif;">實習合作廠商</span>
+        </div>
+        <div class="wrap1">
+                <div class="itemltd">
+                    <img src ="img/新金士頓.png"alt ="">
+                    <ul style="list-style: none;">
+                        <li><a href="Ltd2.html" class="item" id="ltd1" style="font-weight:bold;">遠東金士頓股份有限公司</a></li>
+                    </ul>
+                </div>
+                <div class="itemltd">
+                    <img src ="img/新智邦.png" alt ="">
+                    <ul style="list-style: none;">
+                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">智邦科技股份有限公司</a></li>
+                    </ul>
+                </div>
+                <div class="itemltd">
+                    <img src ="img/捷創.jpg" alt ="">
+                    <ul style="list-style: none;">
+                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">捷創科技股份有限公司</a></li>
+                    </ul>
+                </div>
+                <div class="itemltd">
+                    <img src ="img/宏達.jpg" alt ="">
+                    <ul style="list-style: none;">
+                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">宏達服務股份有限公司</a></li>
+                    </ul>
+                </div>
+        </div>
+        <a href="#" id="morer">完整實習合作廠商...</a>
+    </div>
+    </center>
+
+    <div class="ltdimg">
+        <center>
+        <div class="ltdimgg">
+            <div class="ltdimg1">
+                <tr>
+                    <img class="item1" src="校外實習介紹img/實習期末返校.jpg" width="280" height="210">
+                    <img class="item2" src="校外實習介紹img/實習職缺宣導.jpg" width="280" height="280">
+                    <img class="item1" src="校外實習介紹img/廠商意見反映.jpg" width="280" height="210">
+                    <img class="item2" src="校外實習介紹img/模擬面試.jpg" width="280" height="280">
+                </tr>
+                <tr>
+                    <img class="item2" src="校外實習介紹img/欣興電子入班宣導.jpg" width="280" height="280">
+                    <img class="item1" src="校外實習介紹img/模擬面試.jpg" width="280" height="210">
+                    <img class="item2" src="校外實習介紹img/實習職缺宣導.jpg" width="280" height="280">
+                    <img class="item1" src="校外實習介紹img/欣興電子入班宣導.jpg" width="280" height="210">
+                </tr>
+            </div>
+        </div>
+        </center>
+    </div>
+
+    <div class="footer">
+        <center>
+            <img src="img/明新.png"><br>
+            <a>明新科技大學訊管理系 版權所有&copy;All Rights Reserved. Designed and Maintained by IM MUST </a>
+        </center>
+    </div>
+
+</body>
+<script>
+
+        let btn1=document.querySelector("#tab1");
+        let infoModal1=document.querySelector("#infoModal1");
+        let close1=document.querySelector("#close1");
+        btn1.addEventListener("click", function(){
+        infoModal1.showModal();
+        })
+        close1.addEventListener("click", function(){
+        infoModal1.close();
+        })
+        let btn2=document.querySelector("#tab2");
+        let infoModal2=document.querySelector("#infoModal2");
+        let close2=document.querySelector("#close2");
+        btn2.addEventListener("click", function(){
+        infoModal2.showModal();
+        })
+        close2.addEventListener("click", function(){
+        infoModal2.close();
+        })
+        let btn3=document.querySelector("#tab3");
+        let infoModal3=document.querySelector("#infoModal3");
+        let close3=document.querySelector("#close3");
+        btn3.addEventListener("click", function(){
+        infoModal3.showModal();
+        })
+        close3.addEventListener("click", function(){
+        infoModal3.close();
+        })
+        let btn4=document.querySelector("#tab4");
+        let infoModal4=document.querySelector("#infoModal4");
+        let close4=document.querySelector("#close4");
+        btn4.addEventListener("click", function(){
+        infoModal4.showModal();
+        })
+        close4.addEventListener("click", function(){
+        infoModal4.close();
+        })
+</script>
+</html>
