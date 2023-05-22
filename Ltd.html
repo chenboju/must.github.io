@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>合作廠商</title>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="menu.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <style>
+
         #menu_control{
             position: absolute;
             z-index: -2;
@@ -166,7 +166,7 @@
                 left: -30px;
             }
             .header nav a{
-                width: 255%;
+                width: 200%;
                 display: block;
                 text-decoration: none;
                 color: rgb(0, 0, 0);
@@ -199,14 +199,13 @@
             float: left; /* 只有第一層是靠左對齊*/
         }
 
-        @media screen and (max-width: 1280px){
+        @media screen and (max-width: 1200px){
             .header nav ul.drop-down-menu{
                 display: block;
             }
             .header nav ul.drop-down-menu > li{
                 float: none;
             }
-            
         }
 
         .header nav ul.drop-down-menu ul {
@@ -219,25 +218,12 @@
             margin-left: -40px;
         }
 
-        .drop-down-menu3{
-            border-radius:10% 10% 10% 10%;
-        }
-
-        .drop-down-menu5{
-            border-radius:10% 10% 10% 10%;
-        }
-
-        .drop-down-menu6{
+        .drop-down-menu2{
             border-radius:10% 10% 10% 10%;
         }
 
         .header nav ul.drop-down-menu ul li a:hover {
             color: rgb(147, 109, 18) ;
-        }
-
-        .header nav ul.drop-down-menu ul ul {
-            z-index: 999;
-            left: -10px;
         }
 
         .header nav ul.drop-down-menu ul { /*隱藏次選單*/
@@ -248,6 +234,44 @@
         .header nav ul.drop-down-menu li:hover > ul { /* 滑鼠滑入展開次選單*/
             opacity: 0.8;
             display: block;
+        }
+        @media screen and (max-width: 1280px){
+            #plus:after{
+                content: "▽";
+                float:right;
+                font-size: 30px;
+            }
+            .header nav ul.drop-down-menu ul {
+                width: 70%;
+                line-height:5px;
+                padding: 10px;
+                background-color: #ffffff;
+                border:  rgb(147, 109, 18) 2px solid;
+                position: fixed;
+                z-index: 99;
+                margin-left: 0px;
+            }
+            .drop-down-menu3{
+                border-radius:30px;
+            }
+            .drop-down-menu5{
+                border-radius:30px;
+            }
+            .drop-down-menu6{
+                border-radius:30px;
+            }
+            .header nav ul.drop-down-menu ul a{
+                padding: 0;
+                margin: 0px;
+                margin-left: 40px;
+                border-bottom: none;
+            }
+            .header nav ul.drop-down-menu li:hover > ul { 
+                opacity: 1;
+            }
+        }
+        @media screen and (max-width: 767px){
+            
         }
         
         .top{
@@ -355,23 +379,24 @@
             <ul class="drop-down-menu" style="list-style: none;">
                 <li><a href="index.html" class="item" id="AAA">首頁</a></li>
                 <li><a href="最新消息.html" class="item">最新消息</a></li>
-                <li><a href="實習資訊.html" class="item">實習資訊</a>
+                <li><a href="實習資訊.html" class="item" id="plus">實習資訊</a>
                     <ul class="drop-down-menu3" style="list-style: none;">
-                        <li><a href="校外實習介紹.html" class="item">校外實習介紹</a></li>
-                        <li><a href="最新職缺.html" class="item">最新實習介紹</a></li>
-                        <li><a href="實習注意事項.html" class="item">實習注意事項</a></li>
-                        <li><a href="實習寶典.html" class="item">實習寶典</a></li>
-                        <li><a href="法規與表單.html" class="item">法規與表單</a></li>
+                        <li><a href="校外實習介紹.html" class="item">校外實習資訊</a>
+                        </li>
+                        <li><a href="實習寶典.html" class="item">實習寶典</a>
+                        </li>
+                        <li><a href="法規與表單.html" class="item">法規與表單</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="Ltd.html" class="item">合作廠商</a></li>
-                <li><a href="實習成就.html" class="item">實習成就</a>
+                <li><a href="實習成就.html" class="item" id="plus">實習成就</a>
                     <ul class="drop-down-menu5" style="list-style: none;">
                         <li><a href="實習心得分享.html" class="item">實習心得分享</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="上傳資料.html" class="item">上傳資料</a>
+                <li><a href="上傳資料.html" class="item" id="plus">上傳資料</a>
                     <ul class="drop-down-menu6" style="list-style: none;">
                         <li><a href="實習週記.html" class="item">實習週記</a>
                         </li>
@@ -442,53 +467,53 @@
                         <li><a href="Ltd6.html" class="item" id="ltd1" style="font-weight:bold;">欣銓科技股份有限公司</a></li>
                     </ul>
                 </div>
-                <div class="itemltd">
-                    <img src ="img/新千竣.png" alt ="">
+                <div class="itemltd" id="itemltdii">
+                    <img src ="img/動力安全.jpg" alt ="">
                     <p></p>
                     <ul class="itemltd1" style="list-style: none;">
-                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">千竣科技有限公司</a></li>
+                        <li><a href="Ltd7.html" class="item" id="ltd1" style="font-weight:bold;">動力安全資訊股份有限公司</a></li>
                     </ul>
                 </div>
                 <div class="itemltd">
                     <img src ="img/新東元.png" alt ="">
                     <p></p>
                     <ul class="itemltd1" style="list-style: none;">
-                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">東元醫療社團法人東元綜合醫院</a></li>
-                    </ul>
-                </div>
-                <div class="itemltd">
-                    <img src ="img/新正儀.png" alt ="">
-                    <p></p>
-                    <ul class="itemltd1" style="list-style: none;">
-                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">正儀科技股份有限公司</a></li>
-                    </ul>
-                </div>
-                <div class="itemltd" id="itemltdii">
-                    <img src ="img/新艾克爾.png" alt ="">
-                    <p></p>
-                    <ul class="itemltd1" style="list-style: none;">
-                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">艾克爾國際科技股份有限公司</a></li>
+                        <li><a href="Ltd8.html" class="item" id="ltd1" style="font-weight:bold;">東元醫療社團法人東元綜合醫院</a></li>
                     </ul>
                 </div>
                 <div class="itemltd">
                     <img src ="img/昇佳.png" alt ="">
                     <p></p>
                     <ul class="itemltd1" style="list-style: none;">
-                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">昇佳電子股份有限公司</a></li>
+                        <li><a href="Ltd9.html" class="item" id="ltd1" style="font-weight:bold;">昇佳電子股份有限公司</a></li>
                     </ul>
                 </div>
                 <div class="itemltd">
                     <img src ="img/欣興電子.png" alt ="">
                     <p></p>
                     <ul class="itemltd1" style="list-style: none;">
-                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">欣興電子股份有限公司</a></li>
+                        <li><a href="Ltd10.html" class="item" id="ltd1" style="font-weight:bold;">欣興電子股份有限公司</a></li>
                     </ul>
                 </div>
                 <div class="itemltd" id="itemltdii">
-                    <img src ="img/動力安全.jpg" alt ="">
+                    <img src ="img/新艾克爾.png" alt ="">
                     <p></p>
                     <ul class="itemltd1" style="list-style: none;">
-                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">動力安全資訊股份有限公司</a></li>
+                        <li><a href="Ltd11.html" class="item" id="ltd1" style="font-weight:bold;">艾克爾國際科技股份有限公司</a></li>
+                    </ul>
+                </div>
+                <div class="itemltd">
+                    <img src ="img/仁大資訊.png" alt ="">
+                    <p></p>
+                    <ul class="itemltd1" style="list-style: none;">
+                        <li><a href="Ltd12.html" class="item" id="ltd1" style="font-weight:bold;">仁大資訊股份有限公司</a></li>
+                    </ul>
+                </div>
+                <div class="itemltd">
+                    <img src ="img/雍智科技.png" alt ="">
+                    <p></p>
+                    <ul class="itemltd1" style="list-style: none;">
+                        <li><a href="Ltd13.html" class="item" id="ltd1" style="font-weight:bold;">雍智科技股份有限公司</a></li>
                     </ul>
                 </div>
                 <div class="itemltd">
@@ -496,6 +521,20 @@
                     <p></p>
                     <ul class="itemltd1" style="list-style: none;">
                         <li><a href="Ltd14.html" class="item" id="ltd1" style="font-weight:bold;">矽創電子股份有限公司</a></li>
+                    </ul>
+                </div>
+                <div class="itemltd">
+                    <img src ="img/新正儀.png" alt ="">
+                    <p></p>
+                    <ul class="itemltd1" style="list-style: none;">
+                        <li><a href="Ltd15.html" class="item" id="ltd1" style="font-weight:bold;">正儀科技股份有限公司</a></li>
+                    </ul>
+                </div>
+                <div class="itemltd">
+                    <img src ="img/新千竣.png" alt ="">
+                    <p></p>
+                    <ul class="itemltd1" style="list-style: none;">
+                        <li><a href="#" class="item" id="ltd1" style="font-weight:bold;">千竣科技有限公司</a></li>
                     </ul>
                 </div>
         </div>
